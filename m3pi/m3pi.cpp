@@ -88,7 +88,7 @@ void m3pi::motor (int motor, float speed) {
         else
             opcode = M2_BACKWARD;
     }
-    unsigned char arg = 0x7f * abs(speed);
+    unsigned char arg = 0x7f * fabsf(speed);
 
     _ser.putc(opcode);
     _ser.putc(arg);
