@@ -4,17 +4,17 @@
 void echo_wifly_tx(void);
 void forward_pc_tx(void);
 
-Serial pc(USBTX, USBRX);
-Serial wifly(p28, p27); // tx rx
+static Serial pc(USBTX, USBRX);
+static Serial wifly(p28, p27); // tx rx
 
-m3pi pi;
+static m3pi pi;
 
 int main() {
     wait(0.5);
-    pi.stop();
     
     pc.printf("\n== AK ==\n");
     pc.attach(&forward_pc_tx);
+
     wifly.attach(&echo_wifly_tx);
     
     return 0;
