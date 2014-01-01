@@ -11,8 +11,6 @@ m3pi pi;
 
 int main() {
     wait(0.5);
-    pi.forward(0.5);
-    wait(0.5);
     pi.stop();
     
     pc.printf("\n== AK ==\n");
@@ -31,10 +29,13 @@ void echo_wifly_tx() {
                 pi.forward(0.5);
                 break;
             case 'j':
-                pi.right(0.5);
+                pi.left(0.2);
                 break;
             case 'l':
-                pi.left(0.5);
+                pi.right(0.2);
+                break;
+            case ',':
+                pi.backward(0.2);
                 break;
             case 'k':
                 pi.stop();
