@@ -5,7 +5,7 @@ static AKController ak;
 int main() {
     wait(0.5);
     
-    ak.init();
+    ak.run();
     
     return 0;
 }
