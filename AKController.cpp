@@ -1,6 +1,6 @@
 #include "AKController.h"
 
-#define ACCEL_UNITS_PER_SEC 1.0f
+#define ACCEL_UNITS_PER_SEC 0.75f
 #define ACCEL_TIMESLICE_MS 100
 
 AKController::AKController()
@@ -17,6 +17,7 @@ void AKController::run() {
     this->pc.printf("\n== AK ==\n");
     this->pc.attach(this, &AKController::rx_pc);
     this->wifly.attach(this, &AKController::rx_wifly);
+    this->pi.stop();
 }
 
 void AKController::rx_pc() {
@@ -34,26 +35,26 @@ void AKController::rx_wifly() {
         switch(c) {
             // forward
             case 'i':
-                this->tgt_left_motor_speed = 0.5f;
-                this->tgt_right_motor_speed = 0.5f;
+                this->tgt_left_motor_speed = 0.75f;
+                this->tgt_right_motor_speed = 0.75f;
                 break;
 
             // left
             case 'j':
-                this->tgt_left_motor_speed = 0.1f;
-                this->tgt_right_motor_speed = -0.1f;
+                this->tgt_left_motor_speed = 0.2f;
+                this->tgt_right_motor_speed = -0.2f;
                 break;
 
             // right
             case 'l':
-                this->tgt_left_motor_speed = -0.1f;
-                this->tgt_right_motor_speed = 0.1f;
+                this->tgt_left_motor_speed = -0.2f;
+                this->tgt_right_motor_speed = 0.2f;
                 break;
 
             // back
             case ',':
-                this->tgt_left_motor_speed = -0.1f;
-                this->tgt_right_motor_speed = -0.1f;
+                this->tgt_left_motor_speed = -0.5f;
+                this->tgt_right_motor_speed = -0.5f;
                 break;
 
             // stop
