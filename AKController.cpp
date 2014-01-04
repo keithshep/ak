@@ -35,30 +35,35 @@ void AKController::rx_wifly() {
         switch(c) {
             // forward
             case 'i':
+                //this->pc.printf("forward\n");
                 this->tgt_left_motor_speed = 0.75f;
                 this->tgt_right_motor_speed = 0.75f;
                 break;
 
             // left
             case 'j':
+                //this->pc.printf("left\n");
                 this->tgt_left_motor_speed = 0.2f;
                 this->tgt_right_motor_speed = -0.2f;
                 break;
 
             // right
             case 'l':
+                //this->pc.printf("right\n");
                 this->tgt_left_motor_speed = -0.2f;
                 this->tgt_right_motor_speed = 0.2f;
                 break;
 
             // back
             case ',':
+                //this->pc.printf("back\n");
                 this->tgt_left_motor_speed = -0.5f;
                 this->tgt_right_motor_speed = -0.5f;
                 break;
 
             // stop
             case 'k':
+                //this->pc.printf("stop\n");
                 this->tgt_left_motor_speed = 0.0f;
                 this->tgt_right_motor_speed = 0.0f;
                 break;
