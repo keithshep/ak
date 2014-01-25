@@ -2,10 +2,11 @@
 # see http://mbed.org/handbook/Exporting-to-GCC-ARM-Embedded
 
 GCC_BIN = 
-PROJECT = m3pilib
-OBJECTS = ./main.o ./m3pi/m3pi.o AKController.o
+PROJECT = ak
+OBJECTS = ./main.o ./AKController.o ./mbed-rtos/rtx/TARGET_M3/TOOLCHAIN_GCC/SVC_Table.o ./mbed-rtos/rtx/TARGET_M3/TOOLCHAIN_GCC/HAL_CM3.o ./mbed-rtos/rtx/rt_Task.o ./mbed-rtos/rtx/rt_System.o ./mbed-rtos/rtx/rt_List.o ./mbed-rtos/rtx/rt_Time.o ./mbed-rtos/rtx/rt_Semaphore.o ./mbed-rtos/rtx/rt_Mailbox.o ./mbed-rtos/rtx/rt_CMSIS.o ./mbed-rtos/rtx/HAL_CM.o ./mbed-rtos/rtx/rt_Robin.o ./mbed-rtos/rtx/rt_MemBox.o ./mbed-rtos/rtx/RTX_Conf_CM.o ./mbed-rtos/rtx/rt_Event.o ./mbed-rtos/rtx/rt_Mutex.o ./mbed-rtos/rtos/Thread.o ./mbed-rtos/rtos/RtosTimer.o ./mbed-rtos/rtos/Semaphore.o ./mbed-rtos/rtos/Mutex.o ./m3pi/m3pi.o 
 SYS_OBJECTS = ./mbed/TARGET_LPC1768/TOOLCHAIN_GCC_ARM/cmsis_nvic.o ./mbed/TARGET_LPC1768/TOOLCHAIN_GCC_ARM/system_LPC17xx.o ./mbed/TARGET_LPC1768/TOOLCHAIN_GCC_ARM/startup_LPC17xx.o ./mbed/TARGET_LPC1768/TOOLCHAIN_GCC_ARM/retarget.o 
-INCLUDE_PATHS = -I. -I./m3pi -I./mbed -I./mbed/TARGET_LPC1768 -I./mbed/TARGET_LPC1768/TOOLCHAIN_GCC_ARM 
+INCLUDE_PATHS = -I. -I./m3pi -I./mbed-rtos -I./mbed-rtos/rtx -I./mbed-rtos/rtx/TARGET_M3 -I./mbed-rtos/rtx/TARGET_M3/TOOLCHAIN_GCC -I./mbed-rtos/rtos -I./m3pi -I./mbed -I./mbed/TARGET_LPC1768 -I./mbed/TARGET_LPC1768/TOOLCHAIN_GCC_ARM 
+
 LIBRARY_PATHS = -L./mbed/TARGET_LPC1768/TOOLCHAIN_GCC_ARM 
 LIBRARIES = -lmbed 
 LINKER_SCRIPT = ./mbed/TARGET_LPC1768/TOOLCHAIN_GCC_ARM/LPC1768.ld
