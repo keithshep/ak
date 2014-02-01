@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <math.h>
 
 #include "AKController.h"
 
@@ -81,6 +82,19 @@ void AKController::accel_step() {
     this->right_motor_speed = this->accel_step_val(
             this->right_motor_speed,
             this->tgt_right_motor_speed);
+
+    // special case for when we're stopping. In this case we want the robot to
+    // move straight (otherwise you get these strange quick turns toward the
+    // end of the stop)
+    if(this->tgt_left_motor_speed == 0.0f && this->tgt_right_motor_speed == 0.0f &&
+       (this->left_motor_speed * this->right_motor_speed >= 0.0f)) {
+        if(fabsf(this->left_motor_speed) < fabsf(this->right_motor_speed)) {
+            this->right_motor_speed = this->left_motor_speed;
+        } else {
+            this->left_motor_speed = this->right_motor_speed;
+        }
+    }
+
     this->pi.left_motor(this->left_motor_speed);
     this->pi.right_motor(this->right_motor_speed);
 }
